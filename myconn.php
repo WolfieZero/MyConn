@@ -9,27 +9,27 @@ class MyConn {
 	var $arrResults;
 	var $intCurrentAutoID;
 	
-	function MyConn($strQuery='', $strHost=DB_HOST, $strUser=DB_USER, $strPass=DB_PASS, $strTable=DB_NAME) {
-		$this->dbServer = @mysql_connect($strHost, $strUser, $strPass) 
+	function MyConn($query='', $host=DB_HOST, $user=DB_USER, $pass=DB_PASS, $base=DB_NAME) {
+		$this->dbServer = @mysql_connect($host, $user, $pass) 
 			or die('Server connection not possible.');
 			
-		$this->dbName = @mysql_select_db($strTable, $this->dbServer)
+		$this->dbName = @mysql_select_db($base, $this->dbServer)
 			or die('Database connection not possible.');
 			
-		if($strQuery) {
-			$this->setQuery($strQuery);
+		if( $query ) {
+			$this->setQuery($query);
 		}
 	}
 	
-	function setQuery($strQuery) {
+	function setQuery($query) {
 		
-		$myData = @mysql_query($strQuery, $this->dbServer)
+		$myData = @mysql_query($query, $this->dbServer)
 			or die('MySQL Error: '.mysql_error().'<pre>'.$strQuery.'</pre><br />');
 		
 		if(DEBUG == true) {
 			echo '<pre style="background: #FFFFFF; padding: 2px;">';
 			echo '--MySQL---------------------------------<br />';
-			echo $strQuery.'<br />';
+			echo $query.'<br />';
 			echo '----------------------------------------</pre>';
 		}
 		
