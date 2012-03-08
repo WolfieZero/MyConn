@@ -24,7 +24,7 @@ class MyConn {
 	function setQuery($query) {
 		
 		$myData = @mysql_query($query, $this->dbServer)
-			or die('MySQL Error: '.mysql_error().'<pre>'.$strQuery.'</pre><br />');
+			or die('MySQL Error: '.mysql_error().'<pre>'.$query.'</pre><br />');
 		
 		if(DEBUG == true) {
 			echo '<pre style="background: #FFFFFF; padding: 2px;">';
