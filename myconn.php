@@ -34,7 +34,7 @@ class MyConn {
 		}
 
 		$myData = @mysql_query($query, $this->dbServer)
-			or die(mailDevs('Issue', 'MySQL Error: '.mysql_error()));
+			or die('MySQL Error: '.mysql_error());
 
 		$this->setCurrentAutoID(mysql_insert_id($this->dbServer));
 
