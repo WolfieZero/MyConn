@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('DEBUG')) {
+	define('DEBUG', false);
+}
+
 class MyConn {
 
 	var $dbServer;
